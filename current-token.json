@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-21T00:00:00.000Z",
-  "mode": "launched",
-  "mint": "EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
-  "symbol": "PREVIEW",
-  "name": "Sample Launcher Token",
-  "description": "This is a sample snapshot used to preview the public-site template locally. The live bot will overwrite this file with the latest launched token.",
+  "updatedAt": "2026-05-21T19:29:33.884Z",
+  "mode": "sold",
+  "mint": "8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
+  "symbol": "RUSSIA",
+  "name": "Russia China",
+  "description": "Built for the early, held by the believers, and traded by the operators who recognize momentum on sight.",
   "imageUrl": null,
-  "status": "launched",
-  "launchedAt": "2026-05-21T00:00:00.000Z",
-  "soldAt": null,
-  "devBuySol": 0.05,
-  "createSignature": "SAMPLEcreateSignature1111111111111111111111111111111111111111111111111111111111111111111",
-  "devBuySignature": "SAMPLEdevbuySignature222222222222222222222222222222222222222222222222222222222222222222",
-  "sellSignature": null,
+  "status": "sold",
+  "launchedAt": "2026-05-21T18:57:54.304Z",
+  "soldAt": "2026-05-21T19:29:33.867Z",
+  "devBuySol": 0,
+  "createSignature": "2ef3EdMkMdiQhroB7LhnVPMtMRsMWcLUdsJNrENWVJuzjaohzUcB8cqzwWatMSzBtMbGEeY5438g79v6KtLgJvyt",
+  "devBuySignature": "5NyaYXmCaSs8rMKgGSkGbEjKUHXYkytDAeeQJMWwn5kmKQAgCgv46PzHa6rqP82UiEk5DRoxyzYmNiQvthd6HTVt",
+  "sellSignature": "4qV6A3q2dRgMtncemATzixCHtG3nmLWR65Z3nR5XuaVW8q3KfQDh4882quCu52Cmc9Nxqco36ruF8431e2ASEk9m",
   "explorers": {
-    "pumpfun": "https://pump.fun/coin/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
-    "solscan": "https://solscan.io/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
-    "birdeye": "https://birdeye.so/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000?chain=solana",
-    "gmgn":    "https://gmgn.ai/sol/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000"
+    "pumpfun": "https://pump.fun/coin/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
+    "solscan": "https://solscan.io/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
+    "birdeye": "https://birdeye.so/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K?chain=solana",
+    "gmgn": "https://gmgn.ai/sol/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K"
   },
   "sourceLinks": {
-    "website": "https://example.com/source",
-    "twitter": "https://x.com/search?q=preview"
+    "website": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBCSzhlWW5iaVdZYVNmTjh1MnBhR1pjWDNpcXViVlZqR0ZzTUpvZWE0MXNEU1lMakw2VWh3eHVwWXZ1M2xiTDRnQkxqUUZGdkhxaTNKdFVvU0VBZw?oc=5",
+    "twitter": "https://x.com/search?q=Russia%20China&src=typed_query&f=live"
   },
   "disclaimer": "Current Launcher token. This page updates when a new token launches."
 }
