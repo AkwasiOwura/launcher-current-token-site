@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-21T19:49:49.003Z",
+  "updatedAt": "2026-05-21T20:49:46.862Z",
   "mode": "launched",
-  "mint": "8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
-  "symbol": "BUILD",
-  "name": "Build AI",
-  "description": "Empowering a new generation of intelligence-native investors to claim ownership of the trend they helped create.",
+  "mint": "HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
+  "symbol": "KEVIN",
+  "name": "Kevin De Bruyne",
+  "description": "The flagship community token for traders who prefer being early to being right, every single time.",
   "imageUrl": null,
   "status": "launched",
-  "launchedAt": "2026-05-21T19:49:29.124Z",
+  "launchedAt": "2026-05-21T20:49:29.129Z",
   "soldAt": null,
   "devBuySol": 0.02,
-  "createSignature": "kLDDDfhaJgryJmmhoxJGgyZM39KoJ4jt56UtyytidoQAGP8SeGdejajznZPMkvm4nJvCLt3UzGRB67Q7F1zATqA",
-  "devBuySignature": "4oYE4g8Fon4c7trhTfgCUq3s32o7DZgymNTzjsPFTaMCXtktj29sb7sPhQZtDh5giG4w6ut2JUFiEAMDbGizBjaj",
+  "createSignature": "5QXjbZWQf4xFdY4TzyaZGiJwXfTc5mGFcyrYK3SHXdsQ7LS58SBCPy5C7Dhtg4oqBioVaHmR4v1UdfRmXNT3vBax",
+  "devBuySignature": "4uzr741i3iPmjLUkjxoyhZbM4ypjqzPfXQFc8yvQmPVmaqVHcfJuRvp7WXqzAf5yqf2MJeKnPXc5SpwTCtiU8eYb",
   "sellSignature": null,
   "explorers": {
-    "pumpfun": "https://pump.fun/coin/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
-    "solscan": "https://solscan.io/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
-    "birdeye": "https://birdeye.so/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL?chain=solana",
-    "gmgn": "https://gmgn.ai/sol/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL"
+    "pumpfun": "https://pump.fun/coin/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
+    "solscan": "https://solscan.io/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
+    "birdeye": "https://birdeye.so/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW?chain=solana",
+    "gmgn": "https://gmgn.ai/sol/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW"
   },
   "sourceLinks": {
-    "website": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNY3YwQ093Nk5wZVd2NkdzUDhzTmN6RkVmNVdfNDlpS2E5b09ZVlVyNUpJZGJnUWNEczFZQWYtejF0SlZJWngzSGpZaFdjRWRlbWluaXVjWTFtUE1hZEZSeUl2d0wyV1FJRGd5TjFjWEZCQkY4X3B4Q25USUlxd2Vtd0dnZzhPdldxQWRlMnppbWFfbjNzd1p4bzA1X2VHX21YdkVNOWhXNUFZWkdKcHZDbXQzUFA4MHM2VVE?oc=5",
-    "twitter": "https://x.com/search?q=Build%20AI&src=typed_query&f=live"
+    "website": "https://dexscreener.com/solana/2ftzfbockrgsnvvrn6dgra3jvubzf9r1gvlkt2crpump",
+    "twitter": "https://x.com/search?q=Kevin%20De%20Bruyne&src=typed_query&f=live"
   },
   "disclaimer": "Current Launcher token. This page updates when a new token launches."
 }
