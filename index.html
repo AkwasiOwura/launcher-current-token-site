@@ -20,42 +20,27 @@
     <div class="bg-orb bg-orb-3"></div>
     <div class="bg-spotlight" id="bg-spotlight"></div>
     <div class="bg-stars" aria-hidden="true">
-      <span class="star" style="--x:7%;  --y:14%; --d:0s;    --s:1.2s"></span>
-      <span class="star" style="--x:18%; --y:62%; --d:0.4s;  --s:1.6s"></span>
-      <span class="star" style="--x:29%; --y:30%; --d:0.9s;  --s:2.1s"></span>
-      <span class="star" style="--x:41%; --y:78%; --d:0.2s;  --s:2.4s"></span>
-      <span class="star" style="--x:55%; --y:22%; --d:1.1s;  --s:1.9s"></span>
-      <span class="star" style="--x:68%; --y:54%; --d:0.6s;  --s:1.7s"></span>
-      <span class="star" style="--x:79%; --y:88%; --d:1.4s;  --s:2.5s"></span>
-      <span class="star" style="--x:88%; --y:38%; --d:0.3s;  --s:1.5s"></span>
-      <span class="star" style="--x:94%; --y:72%; --d:0.8s;  --s:2.3s"></span>
-      <span class="star" style="--x:12%; --y:90%; --d:1.6s;  --s:1.8s"></span>
-      <span class="star" style="--x:34%; --y:8%;  --d:0.5s;  --s:2.2s"></span>
-      <span class="star" style="--x:62%; --y:6%;  --d:1.0s;  --s:1.4s"></span>
+      <span class="star" style="--x:7%;  --y:14%; --d:0s;   --s:1.2s"></span>
+      <span class="star" style="--x:18%; --y:62%; --d:0.4s; --s:1.6s"></span>
+      <span class="star" style="--x:29%; --y:30%; --d:0.9s; --s:2.1s"></span>
+      <span class="star" style="--x:41%; --y:78%; --d:0.2s; --s:2.4s"></span>
+      <span class="star" style="--x:55%; --y:22%; --d:1.1s; --s:1.9s"></span>
+      <span class="star" style="--x:68%; --y:54%; --d:0.6s; --s:1.7s"></span>
+      <span class="star" style="--x:79%; --y:88%; --d:1.4s; --s:2.5s"></span>
+      <span class="star" style="--x:88%; --y:38%; --d:0.3s; --s:1.5s"></span>
+      <span class="star" style="--x:94%; --y:72%; --d:0.8s; --s:2.3s"></span>
+      <span class="star" style="--x:12%; --y:90%; --d:1.6s; --s:1.8s"></span>
+      <span class="star" style="--x:34%; --y:8%;  --d:0.5s; --s:2.2s"></span>
+      <span class="star" style="--x:62%; --y:6%;  --d:1.0s; --s:1.4s"></span>
     </div>
     <div class="bg-vignette"></div>
     <div class="bg-noise"></div>
   </div>
 
-  <!-- Scroll progress -->
   <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
-  <!-- Marquee -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>SOLANA · PUMP.FUN</span><i></i>
-      <span>COMMUNITY DRIVEN</span><i></i>
-      <span>VERIFY BEFORE TRADING</span><i></i>
-      <span>BE EARLY · BE CAREFUL</span><i></i>
-      <span>SOLANA · PUMP.FUN</span><i></i>
-      <span>COMMUNITY DRIVEN</span><i></i>
-      <span>VERIFY BEFORE TRADING</span><i></i>
-      <span>BE EARLY · BE CAREFUL</span><i></i>
-    </div>
-  </div>
-
-  <!-- Topbar -->
-  <header class="topbar">
+  <!-- Floating glass nav (inspired by Kizuna's top pill) -->
+  <header class="topbar topbar-float">
     <a class="brand" href="#top" aria-label="Token home">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="22" height="22"><defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d7bff"/><stop offset="1" stop-color="#00e6a8"/></linearGradient></defs><circle cx="16" cy="16" r="7" fill="url(#bm)"/><path d="M16 3 L26 16 L16 29 L6 16 Z" fill="none" stroke="url(#bm)" stroke-width="1.5" opacity="0.6"/></svg>
@@ -67,6 +52,7 @@
     </a>
     <nav class="topnav" aria-label="Page sections">
       <a href="#about">About</a>
+      <a href="#story">Story</a>
       <a href="#how-to-buy">How to Buy</a>
       <a href="#contract">Contract</a>
       <a href="#community">Links</a>
@@ -119,9 +105,7 @@
             <span class="kicker-line"></span>
             SOLANA MEME TOKEN
           </span>
-
           <h1 class="token-name" id="token-name">Loading…</h1>
-
           <p class="tagline" id="tagline">A community-driven meme on Solana.</p>
 
           <div class="token-meta">
@@ -140,31 +124,97 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- BIG WORDMARK SECTION -->
+    <section class="wordmark-section" aria-hidden="true" data-reveal>
+      <div class="wordmark" id="wordmark">$—</div>
+      <p class="wordmark-sub" id="wordmark-sub">A Solana meme, traded on pump.fun.</p>
+    </section>
+
+    <!-- ABOUT / WHY THIS TOKEN -->
     <section class="about" id="about" aria-labelledby="about-title" data-reveal>
       <header class="section-head">
         <h2 id="about-title" class="section-title">About</h2>
         <span class="section-sub">Token notes</span>
       </header>
       <div class="about-body">
-        <p id="about-text">This page is the public home of a Solana memecoin. It is a community-driven meme, with no utility, roadmap, or promise of value. Treat it as cultural, not financial.</p>
+        <p id="about-text">This page is the public home of a Solana memecoin. It is a community-driven meme &mdash; no roadmap, no promise of value, no team gating. Treat it as cultural, not financial.</p>
       </div>
-      <div class="brand-grid">
-        <div class="brand-tile">
-          <span class="brand-tile-h">SOLANA</span>
-          <span class="brand-tile-sub">Fast, cheap, on-chain</span>
+      <ul class="feature-grid" role="list">
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="11" r="2.4"/><path d="M3.5 19c.6-2.4 2.8-3.8 5.5-3.8s4.9 1.4 5.5 3.8"/><path d="M14 19c.5-1.8 2-2.8 3.8-2.8s3.3 1 3.8 2.8"/></svg>
+          </span>
+          <h3 class="feature-h">Community driven</h3>
+          <p class="feature-p">Held by the people who showed up early. No insiders, no promises.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l7-3 7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/><path d="M9 12h6M9 16h6"/></svg>
+          </span>
+          <h3 class="feature-h">On Solana</h3>
+          <p class="feature-p">Fast finality, sub-cent fees and a deep on-chain market for memes.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V8l8-5 8 5v11"/><path d="M9 19v-6h6v6"/></svg>
+          </span>
+          <h3 class="feature-h">Pump.fun native</h3>
+          <p class="feature-p">Born on the open meme market everyone knows. Trade where the action is.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4v5c0 5-3.5 8.5-9 10-5.5-1.5-9-5-9-10V7l9-4z"/><path d="M9 12l2.5 2.5L16 10"/></svg>
+          </span>
+          <h3 class="feature-h">Verify on-chain</h3>
+          <p class="feature-p">Always check the contract address on Solscan before trading. The truth is on-chain.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M4.5 12h15M12 4.5c2.6 3.4 2.6 11.6 0 15M12 4.5c-2.6 3.4-2.6 11.6 0 15"/></svg>
+          </span>
+          <h3 class="feature-h">Open market</h3>
+          <p class="feature-p">Anyone can trade. Anyone can fork the chart. Memes belong to whoever cares.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+          </span>
+          <h3 class="feature-h">Memes forever</h3>
+          <p class="feature-p">A token is a wink at the timeline. Treat it like art, not retirement plans.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story" aria-labelledby="story-title" data-reveal>
+      <header class="section-head">
+        <h2 id="story-title" class="section-title">Story</h2>
+        <span class="section-sub">A short note on why</span>
+      </header>
+      <div class="story-grid">
+        <div class="story-art" aria-hidden="true">
+          <div class="story-frame">
+            <div class="story-halo"></div>
+            <div class="story-inner">
+              <div class="story-sym" id="story-sym">$—</div>
+              <div class="story-ring story-ring-1"></div>
+              <div class="story-ring story-ring-2"></div>
+              <div class="story-ring story-ring-3"></div>
+              <div class="story-spark s1"></div>
+              <div class="story-spark s2"></div>
+              <div class="story-spark s3"></div>
+              <div class="story-spark s4"></div>
+            </div>
+          </div>
         </div>
-        <div class="brand-tile">
-          <span class="brand-tile-h">PUMP.FUN</span>
-          <span class="brand-tile-sub">Open meme market</span>
-        </div>
-        <div class="brand-tile">
-          <span class="brand-tile-h">SPL TOKEN</span>
-          <span class="brand-tile-sub">Standard Solana token</span>
-        </div>
-        <div class="brand-tile">
-          <span class="brand-tile-h">COMMUNITY</span>
-          <span class="brand-tile-sub">For the believers</span>
+        <div class="story-body">
+          <h3 class="story-h">A meme, not a manifesto.</h3>
+          <p>Crypto used to be fun. Memecoins are the part that still is &mdash; tiny markets that turn cultural moments into something you can actually hold. This page is just a doorway: a name, a symbol, a contract, and a couple of trustworthy links.</p>
+          <p>No wallet connection. No analytics. No surprises. Open the chart, copy the contract, verify it on Solscan, and decide for yourself.</p>
+          <div class="story-cta">
+            <a id="story-cta-trade" class="btn-ghost" target="_blank" rel="noopener noreferrer" href="#">Trade on Pump.fun</a>
+            <a id="story-cta-verify" class="btn-ghost-2" target="_blank" rel="noopener noreferrer" href="#">Verify on Solscan</a>
+          </div>
         </div>
       </div>
     </section>
@@ -180,28 +230,28 @@
           <span class="how-step-num">01</span>
           <div class="how-step-body">
             <h3>Get a Solana wallet</h3>
-            <p>Set up a self-custody Solana wallet such as Phantom, Solflare, or Backpack. Keep your seed phrase offline. Never share it.</p>
+            <p>Install Phantom, Solflare or Backpack. Save your seed phrase offline. Never share it.</p>
           </div>
         </li>
         <li class="how-step">
           <span class="how-step-num">02</span>
           <div class="how-step-body">
             <h3>Fund it with SOL</h3>
-            <p>Buy SOL on a reputable exchange and withdraw to your wallet address. Always send a tiny test amount first.</p>
+            <p>Buy SOL on a reputable exchange and withdraw to your wallet. Always send a small test amount first.</p>
           </div>
         </li>
         <li class="how-step">
           <span class="how-step-num">03</span>
           <div class="how-step-body">
             <h3>Verify the contract</h3>
-            <p>Copy the contract address from this page and double-check it on Solscan. Only trade the address that matches.</p>
+            <p>Copy the contract address from this page and double-check it on Solscan. Only trade an address that matches.</p>
           </div>
         </li>
         <li class="how-step">
           <span class="how-step-num">04</span>
           <div class="how-step-body">
             <h3>Trade on Pump.fun</h3>
-            <p>Open the Pump.fun link, paste the contract, and trade only what you can afford to lose. Memecoins are volatile.</p>
+            <p>Open the Pump.fun link, paste the contract, and trade only what you can afford to lose.</p>
           </div>
         </li>
       </ol>
@@ -240,6 +290,9 @@
 
     <!-- FOOTER -->
     <footer class="foot" data-reveal>
+      <div class="foot-mark-bg" aria-hidden="true">
+        <span id="foot-wordmark">$—</span>
+      </div>
       <div class="foot-grid">
         <div class="foot-col">
           <h3 class="foot-h">Disclaimer</h3>

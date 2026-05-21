@@ -82,6 +82,10 @@
     var fbSym = $('fallback-sym');         if (fbSym) fbSym.textContent = '$—';
     var wm = $('hero-watermark');          if (wm) wm.textContent = '$—';
     var brand = $('brand-name');           if (brand) brand.textContent = 'FEATURED';
+    var wmBig = $('wordmark');             if (wmBig) wmBig.textContent = '$—';
+    var wmSub = $('wordmark-sub');         if (wmSub) wmSub.textContent = 'A Solana meme, traded on pump.fun.';
+    var storySym = $('story-sym');         if (storySym) storySym.textContent = '$—';
+    var footWm = $('foot-wordmark');       if (footWm) footWm.textContent = '$—';
     var mint = $('token-mint');            if (mint) mint.textContent = '—';
     var desc = $('token-description');
     if (desc) {
@@ -118,6 +122,14 @@
     var fbSym = $('fallback-sym');        if (fbSym) fbSym.textContent = '$' + symUC.slice(0, 6);
     var wm = $('hero-watermark');         if (wm) wm.textContent = '$' + symUC.slice(0, 8);
     var brand = $('brand-name');          if (brand) brand.textContent = '$' + symUC;
+    var wmBig = $('wordmark');            if (wmBig) wmBig.textContent = '$' + symUC;
+    var wmSub = $('wordmark-sub');        if (wmSub) wmSub.textContent = name + ' — a Solana meme on Pump.fun.';
+    var storySym = $('story-sym');        if (storySym) storySym.textContent = '$' + symUC.slice(0, 6);
+    var footWm = $('foot-wordmark');      if (footWm) footWm.textContent = '$' + symUC;
+    var sct = $('story-cta-trade');
+    if (sct && data.explorers && /^https?:\/\//i.test(data.explorers.pumpfun || '')) sct.href = data.explorers.pumpfun;
+    var scv = $('story-cta-verify');
+    if (scv && data.explorers && /^https?:\/\//i.test(data.explorers.solscan || '')) scv.href = data.explorers.solscan;
     var mintEl = $('token-mint');         if (mintEl) mintEl.textContent = data.mint;
     var desc = $('token-description');    if (desc) desc.textContent = data.description || 'A community-driven meme on Solana.';
     var tag = $('tagline');
