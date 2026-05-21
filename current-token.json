@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-21T19:29:33.884Z",
-  "mode": "sold",
-  "mint": "8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
-  "symbol": "RUSSIA",
-  "name": "Russia China",
-  "description": "Built for the early, held by the believers, and traded by the operators who recognize momentum on sight.",
+  "updatedAt": "2026-05-21T19:49:49.003Z",
+  "mode": "launched",
+  "mint": "8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
+  "symbol": "BUILD",
+  "name": "Build AI",
+  "description": "Empowering a new generation of intelligence-native investors to claim ownership of the trend they helped create.",
   "imageUrl": null,
-  "status": "sold",
-  "launchedAt": "2026-05-21T18:57:54.304Z",
-  "soldAt": "2026-05-21T19:29:33.867Z",
-  "devBuySol": 0,
-  "createSignature": "2ef3EdMkMdiQhroB7LhnVPMtMRsMWcLUdsJNrENWVJuzjaohzUcB8cqzwWatMSzBtMbGEeY5438g79v6KtLgJvyt",
-  "devBuySignature": "5NyaYXmCaSs8rMKgGSkGbEjKUHXYkytDAeeQJMWwn5kmKQAgCgv46PzHa6rqP82UiEk5DRoxyzYmNiQvthd6HTVt",
-  "sellSignature": "4qV6A3q2dRgMtncemATzixCHtG3nmLWR65Z3nR5XuaVW8q3KfQDh4882quCu52Cmc9Nxqco36ruF8431e2ASEk9m",
+  "status": "launched",
+  "launchedAt": "2026-05-21T19:49:29.124Z",
+  "soldAt": null,
+  "devBuySol": 0.02,
+  "createSignature": "kLDDDfhaJgryJmmhoxJGgyZM39KoJ4jt56UtyytidoQAGP8SeGdejajznZPMkvm4nJvCLt3UzGRB67Q7F1zATqA",
+  "devBuySignature": "4oYE4g8Fon4c7trhTfgCUq3s32o7DZgymNTzjsPFTaMCXtktj29sb7sPhQZtDh5giG4w6ut2JUFiEAMDbGizBjaj",
+  "sellSignature": null,
   "explorers": {
-    "pumpfun": "https://pump.fun/coin/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
-    "solscan": "https://solscan.io/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K",
-    "birdeye": "https://birdeye.so/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K?chain=solana",
-    "gmgn": "https://gmgn.ai/sol/token/8rc5VG5TDsrSebEAUv3CqETFhqF4C3Bqh2bnnzj6K38K"
+    "pumpfun": "https://pump.fun/coin/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
+    "solscan": "https://solscan.io/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL",
+    "birdeye": "https://birdeye.so/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL?chain=solana",
+    "gmgn": "https://gmgn.ai/sol/token/8HZbDizdhmzSFCjY6HSuYnibVCGBV8fPmMM8543f7mNL"
   },
   "sourceLinks": {
-    "website": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBCSzhlWW5iaVdZYVNmTjh1MnBhR1pjWDNpcXViVlZqR0ZzTUpvZWE0MXNEU1lMakw2VWh3eHVwWXZ1M2xiTDRnQkxqUUZGdkhxaTNKdFVvU0VBZw?oc=5",
-    "twitter": "https://x.com/search?q=Russia%20China&src=typed_query&f=live"
+    "website": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNY3YwQ093Nk5wZVd2NkdzUDhzTmN6RkVmNVdfNDlpS2E5b09ZVlVyNUpJZGJnUWNEczFZQWYtejF0SlZJWngzSGpZaFdjRWRlbWluaXVjWTFtUE1hZEZSeUl2d0wyV1FJRGd5TjFjWEZCQkY4X3B4Q25USUlxd2Vtd0dnZzhPdldxQWRlMnppbWFfbjNzd1p4bzA1X2VHX21YdkVNOWhXNUFZWkdKcHZDbXQzUFA4MHM2VVE?oc=5",
+    "twitter": "https://x.com/search?q=Build%20AI&src=typed_query&f=live"
   },
   "disclaimer": "Current Launcher token. This page updates when a new token launches."
 }
