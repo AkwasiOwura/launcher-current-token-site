@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-21T00:00:00.000Z",
+  "mode": "launched",
+  "mint": "EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
+  "symbol": "PREVIEW",
+  "name": "Sample Launcher Token",
+  "description": "This is a sample snapshot used to preview the public-site template locally. The live bot will overwrite this file with the latest launched token.",
+  "imageUrl": null,
+  "status": "launched",
+  "launchedAt": "2026-05-21T00:00:00.000Z",
+  "soldAt": null,
+  "devBuySol": 0.05,
+  "createSignature": "SAMPLEcreateSignature1111111111111111111111111111111111111111111111111111111111111111111",
+  "devBuySignature": "SAMPLEdevbuySignature222222222222222222222222222222222222222222222222222222222222222222",
+  "sellSignature": null,
+  "explorers": {
+    "pumpfun": "https://pump.fun/coin/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
+    "solscan": "https://solscan.io/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000",
+    "birdeye": "https://birdeye.so/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000?chain=solana",
+    "gmgn":    "https://gmgn.ai/sol/token/EXAMPLEm1ntAddressForLocalPreviewRenderingOnly0000"
+  },
+  "sourceLinks": {
+    "website": "https://example.com/source",
+    "twitter": "https://x.com/search?q=preview"
+  },
+  "disclaimer": "Current Launcher token. This page updates when a new token launches."
+}

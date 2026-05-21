@@ -1,0 +1,44 @@
+# Netlify config for the Launcher rotating "current token" public site.
+#
+# This site is INTENTIONALLY a single rotating page:
+#   - Always shows the newest Launcher token only.
+#   - Older tokens are NOT preserved.
+#   - The Netlify URL is NOT inserted into any token's pinned metadata.
+#
+# Build: there is nothing to build — the site is static HTML/CSS/JS.
+# The bot triggers a fresh deploy by POSTing to the Netlify build hook URL
+# after each successful launch. Netlify republishes the contents of this
+# directory, including the freshest current-token.json the operator has
+# committed (or that an external workflow has placed alongside these files).
+
+[build]
+  publish = "."
+  command = "echo 'No build step — static site.'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Strong cache headers for the static assets, but DO NOT cache the JSON
+# snapshot — the page must always fetch the freshest "current token".
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+[[headers]]
+  for = "/current-token.json"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/app.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
