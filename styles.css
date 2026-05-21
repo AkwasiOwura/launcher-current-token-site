@@ -245,6 +245,8 @@ img { display: block; max-width: 100%; }
 .pill.is-failed  { color: var(--danger); border-color: rgba(255,100,112,0.45); background: rgba(255,100,112,0.07); }
 .pill.is-failed  .pill-dot { background: var(--danger); }
 .pill.is-loading .pill-dot { animation: pulse-loading 1.6s ease-out infinite; }
+.pill.is-static  { color: var(--violet-2); border-color: rgba(157,123,255,0.45); background: rgba(157,123,255,0.07); }
+.pill.is-static  .pill-dot { background: var(--violet-2); box-shadow: 0 0 10px rgba(157,123,255,0.6); }
 @keyframes pulse-live {
   0%   { box-shadow: 0 0 0 0 rgba(0,230,168,0.55); }
   100% { box-shadow: 0 0 0 16px rgba(0,230,168,0); }
@@ -485,16 +487,7 @@ img { display: block; max-width: 100%; }
   background: var(--muted-3);
 }
 .meta-time { color: var(--muted-2); }
-.status-tag {
-  padding: 4px 11px;
-  border-radius: 999px;
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 800;
-  background: var(--panel-2); border: 1px solid var(--border-2);
-  font-family: var(--sans); color: var(--muted);
-}
-.status-tag.is-live    { color: var(--mint);   border-color: rgba(0,230,168,0.5);   background: rgba(0,230,168,0.10); box-shadow: 0 0 20px -4px rgba(0,230,168,0.45); }
-.status-tag.is-sold    { color: var(--warn);   border-color: rgba(255,186,92,0.5);  background: rgba(255,186,92,0.10); }
-.status-tag.is-failed  { color: var(--danger); border-color: rgba(255,100,112,0.5); background: rgba(255,100,112,0.10); }
+/* (no inline state badges — the hero shows brand-only meta chips) */
 
 .tagline {
   margin: 0;
@@ -532,6 +525,87 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
 }
 .about-body p { margin: 0 0 18px; color: var(--text-2); font-size: 16px; line-height: 1.7; max-width: 78ch; }
+
+/* Brand tile grid (replaces the operational stats grid) */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  position: relative;
+}
+.brand-tile {
+  padding: 18px 20px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex; flex-direction: column; gap: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.brand-tile::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: var(--grad-1); opacity: 0.5;
+  transform: scaleY(0.55); transform-origin: top;
+  transition: transform 0.3s var(--ease), opacity 0.25s var(--ease);
+}
+.brand-tile:hover { transform: translateY(-2px); border-color: var(--border-2); }
+.brand-tile:hover::before { transform: scaleY(1); opacity: 0.95; }
+.brand-tile-h   { font-size: 13px; font-weight: 800; letter-spacing: 0.18em; color: var(--text); }
+.brand-tile-sub { color: var(--muted-2); font-size: 12px; letter-spacing: 0.04em; }
+
+/* Hero meta chips (brand chips: SOLANA, PUMP.FUN) */
+.meta-chip {
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 800;
+  background: var(--panel-2); border: 1px solid var(--border-2);
+  color: var(--muted);
+}
+
+/* How to Buy */
+.how-to-buy {
+  position: relative;
+  margin: 0 0 40px;
+  padding: 26px 28px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.how-to-buy::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(700px 220px at 100% 0%, rgba(157,123,255,0.10), transparent 60%),
+    radial-gradient(700px 220px at 0% 100%, rgba(0,230,168,0.08), transparent 60%);
+  pointer-events: none;
+}
+.how-steps {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;
+  position: relative;
+}
+.how-step {
+  position: relative;
+  padding: 18px 18px 18px 64px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+  overflow: hidden;
+}
+.how-step:hover { transform: translateY(-2px); border-color: var(--border-2); background: var(--panel-2); }
+.how-step-num {
+  position: absolute; left: 16px; top: 16px;
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 22px;
+  background: var(--grad-1);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.how-step-body h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); }
+.how-step-body p  { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 
 .link-grid {
   display: grid;

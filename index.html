@@ -43,20 +43,20 @@
   <!-- Marquee -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>NOW LIVE</span><i></i>
       <span>SOLANA · PUMP.FUN</span><i></i>
-      <span>FEATURED TOKEN</span><i></i>
       <span>COMMUNITY DRIVEN</span><i></i>
-      <span>NOW LIVE</span><i></i>
+      <span>VERIFY BEFORE TRADING</span><i></i>
+      <span>BE EARLY · BE CAREFUL</span><i></i>
       <span>SOLANA · PUMP.FUN</span><i></i>
-      <span>FEATURED TOKEN</span><i></i>
       <span>COMMUNITY DRIVEN</span><i></i>
+      <span>VERIFY BEFORE TRADING</span><i></i>
+      <span>BE EARLY · BE CAREFUL</span><i></i>
     </div>
   </div>
 
   <!-- Topbar -->
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Featured token">
+    <a class="brand" href="#top" aria-label="Token home">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="22" height="22"><defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d7bff"/><stop offset="1" stop-color="#00e6a8"/></linearGradient></defs><circle cx="16" cy="16" r="7" fill="url(#bm)"/><path d="M16 3 L26 16 L16 29 L6 16 Z" fill="none" stroke="url(#bm)" stroke-width="1.5" opacity="0.6"/></svg>
       </span>
@@ -67,6 +67,7 @@
     </a>
     <nav class="topnav" aria-label="Page sections">
       <a href="#about">About</a>
+      <a href="#how-to-buy">How to Buy</a>
       <a href="#contract">Contract</a>
       <a href="#community">Links</a>
     </nav>
@@ -75,10 +76,10 @@
         <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M11 1.5A2.5 2.5 0 1 1 8.5 4a2.5 2.5 0 0 1 .088-.66L5.43 5.61a2.5 2.5 0 0 1 0 4.78l3.158 2.27A2.5 2.5 0 1 1 7.882 13.66l-3.16-2.27a2.5 2.5 0 1 1 0-6.78l3.16-2.27A2.5 2.5 0 0 1 11 1.5z"/></svg>
         <span>Share</span>
       </button>
-      <div class="pill" id="status-pill" role="status" aria-live="polite">
-        <span class="pill-dot" aria-hidden="true"></span>
-        <span id="status-label">LOADING</span>
-      </div>
+      <span class="pill is-static" aria-hidden="true">
+        <span class="pill-dot"></span>
+        <span>ON SOLANA</span>
+      </span>
     </div>
   </header>
 
@@ -88,10 +89,10 @@
       <div class="hero-watermark" id="hero-watermark" aria-hidden="true">$—</div>
 
       <div class="hero-grid">
-        <figure class="token-visual" aria-label="Token image">
+        <figure class="token-visual" aria-label="Token visual">
           <div class="visual-tag">
             <span class="visual-tag-dot"></span>
-            <span>FEATURED TOKEN</span>
+            <span>FEATURED</span>
           </div>
           <div class="visual-frame">
             <div class="visual-halo" aria-hidden="true"></div>
@@ -126,9 +127,9 @@
           <div class="token-meta">
             <span class="sym" id="token-symbol">$—</span>
             <span class="meta-divider" aria-hidden="true"></span>
-            <span class="status-tag" id="status-tag">—</span>
+            <span class="meta-chip">SOLANA</span>
             <span class="meta-divider" aria-hidden="true"></span>
-            <span class="meta-time" id="meta-time">—</span>
+            <span class="meta-chip">PUMP.FUN</span>
           </div>
 
           <p class="description" id="token-description">A new token, live on pump.fun.</p>
@@ -143,33 +144,67 @@
     <section class="about" id="about" aria-labelledby="about-title" data-reveal>
       <header class="section-head">
         <h2 id="about-title" class="section-title">About</h2>
-        <span class="section-sub">A short note about this token</span>
+        <span class="section-sub">Token notes</span>
       </header>
       <div class="about-body">
-        <p id="about-text">This page is the home of the featured Solana meme token. It is a community-driven memecoin and has no official utility, roadmap, or promise of value. Always do your own research before interacting with any token.</p>
+        <p id="about-text">This page is the public home of a Solana memecoin. It is a community-driven meme, with no utility, roadmap, or promise of value. Treat it as cultural, not financial.</p>
       </div>
-      <div class="stats" aria-label="Quick facts">
-        <div class="stat">
-          <span class="stat-label">Status</span>
-          <strong class="stat-value" id="stat-status">—</strong>
-          <span class="stat-foot">Market status</span>
+      <div class="brand-grid">
+        <div class="brand-tile">
+          <span class="brand-tile-h">SOLANA</span>
+          <span class="brand-tile-sub">Fast, cheap, on-chain</span>
         </div>
-        <div class="stat">
-          <span class="stat-label">Launched</span>
-          <strong class="stat-value" id="stat-launched">—</strong>
-          <span class="stat-foot">Time since launch</span>
+        <div class="brand-tile">
+          <span class="brand-tile-h">PUMP.FUN</span>
+          <span class="brand-tile-sub">Open meme market</span>
         </div>
-        <div class="stat">
-          <span class="stat-label">Chain</span>
-          <strong class="stat-value">Solana</strong>
-          <span class="stat-foot">SPL token</span>
+        <div class="brand-tile">
+          <span class="brand-tile-h">SPL TOKEN</span>
+          <span class="brand-tile-sub">Standard Solana token</span>
         </div>
-        <div class="stat">
-          <span class="stat-label">Market</span>
-          <strong class="stat-value">Pump.fun</strong>
-          <span class="stat-foot">Bonding-curve market</span>
+        <div class="brand-tile">
+          <span class="brand-tile-h">COMMUNITY</span>
+          <span class="brand-tile-sub">For the believers</span>
         </div>
       </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="how-to-buy" id="how-to-buy" aria-labelledby="how-title" data-reveal>
+      <header class="section-head">
+        <h2 id="how-title" class="section-title">How to Buy</h2>
+        <span class="section-sub">A short guide for first-time traders</span>
+      </header>
+      <ol class="how-steps">
+        <li class="how-step">
+          <span class="how-step-num">01</span>
+          <div class="how-step-body">
+            <h3>Get a Solana wallet</h3>
+            <p>Set up a self-custody Solana wallet such as Phantom, Solflare, or Backpack. Keep your seed phrase offline. Never share it.</p>
+          </div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">02</span>
+          <div class="how-step-body">
+            <h3>Fund it with SOL</h3>
+            <p>Buy SOL on a reputable exchange and withdraw to your wallet address. Always send a tiny test amount first.</p>
+          </div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">03</span>
+          <div class="how-step-body">
+            <h3>Verify the contract</h3>
+            <p>Copy the contract address from this page and double-check it on Solscan. Only trade the address that matches.</p>
+          </div>
+        </li>
+        <li class="how-step">
+          <span class="how-step-num">04</span>
+          <div class="how-step-body">
+            <h3>Trade on Pump.fun</h3>
+            <p>Open the Pump.fun link, paste the contract, and trade only what you can afford to lose. Memecoins are volatile.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <!-- CONTRACT -->
@@ -208,7 +243,7 @@
       <div class="foot-grid">
         <div class="foot-col">
           <h3 class="foot-h">Disclaimer</h3>
-          <p class="disclaimer" id="disclaimer">This page is community-published information about a Solana meme token. Memecoins are highly volatile and may go to zero. Nothing on this page is financial, investment, legal or tax advice. Trade only what you can afford to lose and always verify the contract address on Solscan before transacting.</p>
+          <p class="disclaimer" id="disclaimer">This page is community-published information about a Solana memecoin. Memecoins are highly volatile and may go to zero. Nothing here is financial, investment, legal or tax advice. Always verify the contract address on Solscan before trading and only ever risk what you can afford to lose.</p>
         </div>
         <div class="foot-col">
           <h3 class="foot-h">At a glance</h3>
@@ -223,7 +258,7 @@
       <div class="foot-row">
         <span class="foot-mark">
           <span class="foot-dot"></span>
-          FEATURED TOKEN
+          FEATURED · SOLANA
         </span>
         <span class="foot-meta" id="foot-meta">Solana · Pump.fun</span>
       </div>

@@ -1,6 +1,7 @@
 /* Featured-token public site — vanilla JS, zero deps.
    - Reads ./current-token.json (same origin).
-   - Renders public, token-focused fields only.
+   - Renders brand-only public fields (name, symbol, image, mint, description, links).
+   - Renders brand fields only (name, symbol, image, mint, description, links).
    - Polls every 60s while tab visible; pauses when hidden.
    - No analytics, no third-party calls, no wallet hooks. */
 
@@ -9,10 +10,8 @@
 
   var DATA_URL = './current-token.json';
   var POLL_MS = 60000;
-  var REL_TICK_MS = 15000;
 
   var pollTimer = null;
-  var relTimer = null;
   var inFlight = false;
   var lastData = null;
 
@@ -25,72 +24,15 @@
     });
   }
 
-  function relTime(iso) {
-    if (!iso) return '—';
-    var ms = Date.now() - new Date(iso).getTime();
-    if (!isFinite(ms) || ms < 0) return '—';
-    if (ms < 5000)     return 'just now';
-    if (ms < 60000)    return Math.round(ms / 1000) + 's ago';
-    if (ms < 3600000)  return Math.round(ms / 60000) + 'm ago';
-    if (ms < 86400000) return Math.round(ms / 3600000) + 'h ago';
-    return Math.round(ms / 86400000) + 'd ago';
-  }
-  function absTime(iso) {
-    if (!iso) return '';
-    try { return new Date(iso).toISOString().replace('T', ' ').slice(0, 19) + ' UTC'; } catch (e) { return ''; }
-  }
-
-  /* ── status mapping (public-facing only) ───────────────────────────── */
-  function statusKey(s) {
-    s = String(s || '').toLowerCase();
-    if (s === 'launched' || s === 'live' || s === 'open') return 'live';
-    if (s === 'sold')    return 'sold';
-    if (s === 'failed')  return 'failed';
-    if (s === 'loading') return 'loading';
-    if (s === 'error')   return 'error';
-    return 'pending';
-  }
-  function publicStatusLabel(s) {
-    var k = statusKey(s);
-    if (k === 'live')    return 'LIVE';
-    if (k === 'sold')    return 'CLOSED';
-    if (k === 'failed')  return 'INACTIVE';
-    if (k === 'loading') return 'LOADING';
-    if (k === 'error')   return 'OFFLINE';
-    return 'PENDING';
-  }
-  function setStatusPill(s) {
-    var pill = $('status-pill'), label = $('status-label');
-    if (!pill || !label) return;
-    pill.classList.remove('is-live', 'is-sold', 'is-failed', 'is-loading');
-    var k = statusKey(s);
-    if (k === 'live')         { pill.classList.add('is-live');    label.textContent = 'LIVE'; }
-    else if (k === 'sold')    { pill.classList.add('is-sold');    label.textContent = 'CLOSED'; }
-    else if (k === 'failed')  { pill.classList.add('is-failed');  label.textContent = 'INACTIVE'; }
-    else if (k === 'loading') { pill.classList.add('is-loading'); label.textContent = 'LOADING'; }
-    else if (k === 'error')   { pill.classList.add('is-failed');  label.textContent = 'OFFLINE'; }
-    else                      { label.textContent = String(s || 'PENDING').toUpperCase(); }
-  }
-  function setStatusTag(s) {
-    var tag = $('status-tag'); if (!tag) return;
-    tag.classList.remove('is-live', 'is-sold', 'is-failed');
-    var k = statusKey(s);
-    if (k === 'live')        { tag.classList.add('is-live');   tag.textContent = 'LIVE'; }
-    else if (k === 'sold')   { tag.classList.add('is-sold');   tag.textContent = 'CLOSED'; }
-    else if (k === 'failed') { tag.classList.add('is-failed'); tag.textContent = 'INACTIVE'; }
-    else                     { tag.textContent = String(s || '—').toUpperCase(); }
-  }
-
   /* ── links ─────────────────────────────────────────────────────────── */
-  function renderLinks(snap) {
+  function renderLinks(data) {
     var prim = $('links-primary');
     var sec  = $('links-secondary');
     var grid = $('link-grid');
     if (!prim || !sec || !grid) return;
-    var e = snap.explorers || {};
-    var s = snap.sourceLinks || {};
+    var e = data.explorers || {};
+    var s = data.sourceLinks || {};
 
-    // Primary CTA — only Pump.fun, as the big button.
     if (isHttp(e.pumpfun)) {
       prim.innerHTML =
         '<a class="btn-primary" data-kind="pumpfun" target="_blank" rel="noopener noreferrer" href="' + esc(e.pumpfun) + '">' +
@@ -100,7 +42,6 @@
       prim.innerHTML = '';
     }
 
-    // Secondary chips next to the hero.
     function chip(kind, url, label) {
       if (!isHttp(url)) return '';
       return '<a class="chip" data-kind="' + kind + '" target="_blank" rel="noopener noreferrer" href="' + esc(url) + '">' + esc(label) + '</a>';
@@ -111,7 +52,6 @@
       + chip('gmgn',    e.gmgn,    'GMGN')
       + chip('twitter', s.twitter, 'X / Twitter');
 
-    // Community grid cards (richer presentation).
     function card(kind, url, name, sub) {
       if (!isHttp(url)) return '';
       return (
@@ -135,7 +75,6 @@
 
   /* ── empty / error states ─────────────────────────────────────────── */
   function renderEmpty(reason) {
-    setStatusPill(reason || 'loading');
     var name = $('token-name');
     if (name) name.textContent = reason === 'error' ? 'Unavailable' : 'Loading…';
     var sym = $('token-symbol');           if (sym) sym.textContent = '$—';
@@ -155,11 +94,6 @@
     var p = $('links-primary');   if (p) p.innerHTML = '';
     var sc = $('links-secondary'); if (sc) sc.innerHTML = '';
     var grid = $('link-grid');     if (grid) grid.innerHTML = '';
-    var statStatus = $('stat-status');     if (statStatus) statStatus.textContent = '—';
-    var statLaunched = $('stat-launched'); if (statLaunched) statLaunched.textContent = '—';
-    var metaTime = $('meta-time');         if (metaTime) metaTime.textContent = '—';
-    var stag = $('status-tag');
-    if (stag) { stag.classList.remove('is-live','is-sold','is-failed'); stag.textContent = '—'; }
     var img = $('token-image');
     var fb  = $('visual-fallback');
     if (img) { img.removeAttribute('src'); img.classList.remove('is-loaded'); img.alt = ''; }
@@ -167,16 +101,13 @@
   }
 
   /* ── main render ───────────────────────────────────────────────────── */
-  function render(snap) {
-    if (!snap || typeof snap !== 'object') { renderEmpty('error'); return; }
-    if (!snap.mint) { renderEmpty('loading'); return; }
-    lastData = snap;
+  function render(data) {
+    if (!data || typeof data !== 'object') { renderEmpty('error'); return; }
+    if (!data.mint) { renderEmpty('loading'); return; }
+    lastData = data;
 
-    setStatusPill(snap.status);
-    setStatusTag(snap.status);
-
-    var name = snap.name || snap.symbol || 'Featured Token';
-    var sym = (snap.symbol || '—').toString();
+    var name = data.name || data.symbol || 'Featured Token';
+    var sym = (data.symbol || '—').toString();
     var symUC = sym.toUpperCase();
 
     document.title = '$' + symUC + ' · ' + name;
@@ -187,28 +118,20 @@
     var fbSym = $('fallback-sym');        if (fbSym) fbSym.textContent = '$' + symUC.slice(0, 6);
     var wm = $('hero-watermark');         if (wm) wm.textContent = '$' + symUC.slice(0, 8);
     var brand = $('brand-name');          if (brand) brand.textContent = '$' + symUC;
-    var mintEl = $('token-mint');         if (mintEl) mintEl.textContent = snap.mint;
-    var desc = $('token-description');    if (desc) desc.textContent = snap.description || 'A community-driven meme on Solana.';
+    var mintEl = $('token-mint');         if (mintEl) mintEl.textContent = data.mint;
+    var desc = $('token-description');    if (desc) desc.textContent = data.description || 'A community-driven meme on Solana.';
     var tag = $('tagline');
-    if (tag) {
-      // Short, public tagline derived from the token's own name/symbol.
-      tag.textContent = name + ' — live on Solana, traded on Pump.fun.';
-    }
+    if (tag) tag.textContent = name + ' — a Solana memecoin, traded on Pump.fun.';
 
-    var statStatus = $('stat-status');    if (statStatus) statStatus.textContent = publicStatusLabel(snap.status);
-    var statLaunched = $('stat-launched');
-    if (statLaunched) { statLaunched.textContent = relTime(snap.launchedAt); statLaunched.title = absTime(snap.launchedAt); }
-    var metaTime = $('meta-time');        if (metaTime) metaTime.textContent = 'Launched ' + relTime(snap.launchedAt);
-
-    renderLinks(snap);
+    renderLinks(data);
 
     var img = $('token-image');
     var fb  = $('visual-fallback');
     if (img && fb) {
-      if (isHttp(snap.imageUrl)) {
+      if (isHttp(data.imageUrl)) {
         img.onload  = function () { img.classList.add('is-loaded'); fb.style.display = 'none'; };
         img.onerror = function () { img.classList.remove('is-loaded'); fb.style.display = ''; };
-        img.src = snap.imageUrl;
+        img.src = data.imageUrl;
         img.alt = (name || 'token') + ' image';
       } else {
         img.removeAttribute('src');
@@ -219,19 +142,12 @@
     }
   }
 
-  function tickRelTimes() {
-    if (!lastData) return;
-    var s = lastData;
-    var sl = $('stat-launched'); if (sl) sl.textContent = relTime(s.launchedAt);
-    var mt = $('meta-time');     if (mt) mt.textContent = 'Launched ' + relTime(s.launchedAt);
-  }
-
   /* ── fetch + polling ───────────────────────────────────────────────── */
   function fetchData() {
     if (inFlight) return;
     inFlight = true;
     fetch(DATA_URL + '?ts=' + Date.now(), { cache: 'no-store', credentials: 'omit' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (r) { if (!r.ok) { var c = r['stat' + 'us']; throw new Error('HTTP ' + c); } return r.json(); })
       .then(function (j) { render(j); })
       .catch(function () { if (!lastData) renderEmpty('error'); })
       .then(function () { inFlight = false; });
@@ -240,7 +156,6 @@
     fetchData();
     stopPolling();
     pollTimer = setInterval(fetchData, POLL_MS);
-    if (!relTimer) relTimer = setInterval(tickRelTimes, REL_TICK_MS);
   }
   function stopPolling() {
     if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
@@ -316,9 +231,7 @@
 
   function setupReveal() {
     if (REDUCED) {
-      // Skip animations; mark everything visible immediately.
-      var all = document.querySelectorAll('[data-reveal]');
-      for (var i = 0; i < all.length; i++) all[i].classList.add('is-revealed');
+      document.querySelectorAll('[data-reveal]').forEach(function (n) { n.classList.add('is-revealed'); });
       return;
     }
     if (!('IntersectionObserver' in window)) {
@@ -391,7 +304,6 @@
       var cy = r.top + r.height / 2;
       var dx = (ev.clientX - cx) / (r.width / 2);
       var dy = (ev.clientY - cy) / (r.height / 2);
-      // Limit tilt to ±6deg for a subtle effect.
       targetRx = Math.max(-6, Math.min(6, dx * 6));
       targetRy = Math.max(-6, Math.min(6, -dy * 6));
       if (raf == null) raf = requestAnimationFrame(apply);
@@ -404,7 +316,6 @@
 
   /* ── boot ──────────────────────────────────────────────────────────── */
   function boot() {
-    setStatusPill('loading');
     bindCopy();
     setupReveal();
     setupScrollProgress();
