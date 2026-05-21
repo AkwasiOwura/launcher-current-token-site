@@ -75,8 +75,6 @@
 
   /* ── empty / error states ─────────────────────────────────────────── */
   function renderEmpty(reason) {
-    var name = $('token-name');
-    if (name) name.textContent = reason === 'error' ? 'Unavailable' : 'Loading…';
     var sym = $('token-symbol');           if (sym) sym.textContent = '$—';
     var symBadge = $('token-symbol-badge'); if (symBadge) symBadge.textContent = '—';
     var fbSym = $('fallback-sym');         if (fbSym) fbSym.textContent = '$—';
@@ -87,6 +85,12 @@
     var storySym = $('story-sym');         if (storySym) storySym.textContent = '$—';
     var footWm = $('foot-wordmark');       if (footWm) footWm.textContent = '$—';
     var mint = $('token-mint');            if (mint) mint.textContent = '—';
+    var caMint = $('ca-chip-mint');        if (caMint) caMint.textContent = '—';
+    var nameElx = $('token-name');
+    if (nameElx) {
+      nameElx.innerHTML = '<span class="hl"></span>';
+      nameElx.querySelector('.hl').textContent = reason === 'error' ? 'Unavailable' : 'Loading…';
+    }
     var desc = $('token-description');
     if (desc) {
       desc.textContent = reason === 'error'
@@ -116,7 +120,12 @@
 
     document.title = '$' + symUC + ' · ' + name;
 
-    var nameEl = $('token-name');         if (nameEl) nameEl.textContent = name;
+    var nameEl = $('token-name');
+    if (nameEl) {
+      // Keep the highlight-underline span around the name.
+      nameEl.innerHTML = '<span class="hl"></span>';
+      nameEl.querySelector('.hl').textContent = name;
+    }
     var symEl = $('token-symbol');        if (symEl) symEl.textContent = '$' + symUC;
     var symBadge = $('token-symbol-badge'); if (symBadge) symBadge.textContent = symUC;
     var fbSym = $('fallback-sym');        if (fbSym) fbSym.textContent = '$' + symUC.slice(0, 6);
@@ -131,6 +140,11 @@
     var scv = $('story-cta-verify');
     if (scv && data.explorers && /^https?:\/\//i.test(data.explorers.solscan || '')) scv.href = data.explorers.solscan;
     var mintEl = $('token-mint');         if (mintEl) mintEl.textContent = data.mint;
+    var caMint = $('ca-chip-mint');
+    if (caMint) {
+      var m = String(data.mint || '');
+      caMint.textContent = m && m.length > 14 ? (m.slice(0, 6) + '…' + m.slice(-4)) : m;
+    }
     var desc = $('token-description');    if (desc) desc.textContent = data.description || 'A community-driven meme on Solana.';
     var tag = $('tagline');
     if (tag) tag.textContent = name + ' — a Solana memecoin, traded on Pump.fun.';
@@ -205,6 +219,17 @@
     });
   }
   function bindCopy() {
+    var ca = $('ca-chip');
+    if (ca) {
+      ca.addEventListener('click', function () {
+        var mint = $('token-mint') ? $('token-mint').textContent.trim() : '';
+        if (!mint || mint === '—') return;
+        writeClipboard(mint).then(function () {
+          ca.classList.add('is-copied');
+          setTimeout(function () { ca.classList.remove('is-copied'); }, 1400);
+        }, function () { /* silent */ });
+      });
+    }
     var btn = $('copy-mint');
     if (btn) {
       btn.addEventListener('click', function () {
