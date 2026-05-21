@@ -762,6 +762,191 @@ img { display: block; max-width: 100%; }
 }
 .foot-meta { font-family: var(--mono); font-size: 11px; color: var(--muted-3); }
 
+/* ───── Animation layer add-ons ─────────────────────────────────────── */
+
+/* Scroll progress bar (top of viewport) */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 5;
+  height: 2px;
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+.scroll-progress > span {
+  display: block;
+  height: 100%; width: 0;
+  background: var(--grad-cta);
+  box-shadow: 0 0 16px rgba(157,123,255,0.55);
+  transition: width 0.12s linear;
+}
+
+/* Mouse-position aware spotlight */
+.bg-spotlight {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--mx, 50%) var(--my, 22%),
+    rgba(195, 172, 255, 0.18),
+    rgba(108, 242, 203, 0.10) 32%,
+    transparent 70%
+  );
+  transition: background-position 0.3s var(--ease);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* Twinkling starfield (CSS-only) */
+.bg-stars { position: absolute; inset: 0; pointer-events: none; }
+.bg-stars .star {
+  position: absolute;
+  top: var(--y); left: var(--x);
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bg-stars .star {
+    animation: twinkle 4.5s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+    animation-duration: calc(3s + var(--s, 1.6s));
+  }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0;   transform: scale(0.6); }
+  40%      { opacity: 0.95; transform: scale(1.15); }
+  60%      { opacity: 0.7; transform: scale(1);   }
+}
+
+/* Section entrance reveal (driven by IntersectionObserver in app.js) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+[data-reveal].is-revealed {
+  opacity: 1; transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Hero token-name shimmer on idle */
+@media (prefers-reduced-motion: no-preference) {
+  .token-name {
+    background-size: 200% 100%;
+    animation: textShine 6s linear infinite;
+  }
+}
+@keyframes textShine {
+  0%   { background-position: 0%   50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Floating token card (gentle vertical bob) */
+@media (prefers-reduced-motion: no-preference) {
+  .token-visual .visual-frame {
+    animation: floatY 7s ease-in-out infinite;
+    transform-origin: center;
+  }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Slow rotation on the fallback ring system (existing rings just pulse) */
+@media (prefers-reduced-motion: no-preference) {
+  .fallback-rings { animation: spinSlow 28s linear infinite; }
+}
+@keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Mouse-aware tilt support on the token card (JS sets --rx / --ry) */
+.token-visual .visual-frame {
+  transform: rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg)) translateY(var(--fy, 0px));
+  transition: transform 0.15s var(--ease-out);
+}
+.token-visual { perspective: 1000px; }
+
+/* Pulse on the visual-tag dot — already exists; add a wider halo ring */
+.visual-tag {
+  position: relative;
+}
+.visual-tag::after {
+  content: ""; position: absolute; inset: -3px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,230,168,0.35);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .visual-tag::after { animation: tagHalo 2.4s ease-out infinite; }
+}
+@keyframes tagHalo {
+  0%   { opacity: 0.8; transform: scale(0.96); }
+  100% { opacity: 0;   transform: scale(1.25); }
+}
+
+/* Link-card light sweep on hover */
+.link-card { position: relative; overflow: hidden; }
+.link-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.10) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+  pointer-events: none;
+}
+.link-card:hover::after { transform: translateX(120%); }
+
+/* Big section watermark fades in on reveal */
+.hero-watermark {
+  transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+  transform: translateY(20px);
+}
+[data-reveal].is-revealed .hero-watermark {
+  transform: translateY(0);
+}
+
+/* Per-letter stat-value count-up — handled by JS; here we just smooth it */
+.stat-value { transition: color 0.3s var(--ease); }
+
+/* Soft border breathing on the token-frame gradient */
+@media (prefers-reduced-motion: no-preference) {
+  .visual-frame {
+    background-size: 200% 200%;
+    animation: floatY 7s ease-in-out infinite, frameBreathe 8s ease-in-out infinite;
+  }
+}
+@keyframes frameBreathe {
+  0%, 100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 100%; }
+}
+
+/* Pill dot enhanced double-pulse */
+@media (prefers-reduced-motion: no-preference) {
+  .pill.is-live .pill-dot {
+    animation: pulse-live 1.8s ease-out infinite, dotBreath 1.8s ease-in-out infinite;
+  }
+}
+@keyframes dotBreath {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* Chips: gentle bobbing arrow on focus-within */
+.chip:focus-visible::after { animation: chipArrow 0.9s ease-in-out infinite; }
+@keyframes chipArrow {
+  0%, 100% { transform: translate(0,0); }
+  50%      { transform: translate(2px,-2px); }
+}
+
+/* Mobile motion restraint */
+@media (max-width: 760px) {
+  .token-visual .visual-frame { animation-duration: 9s; }
+  .bg-stars { display: none; } /* keep mobile light */
+}
+
 /* ───── Reduced motion + print ───── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

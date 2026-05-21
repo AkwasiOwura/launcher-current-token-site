@@ -308,10 +308,108 @@
     }
   }
 
+  /* ── motion: reveal-on-scroll, scroll-progress, spotlight, card tilt ── */
+  var REDUCED = (function () {
+    try { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+    catch (e) { return false; }
+  })();
+
+  function setupReveal() {
+    if (REDUCED) {
+      // Skip animations; mark everything visible immediately.
+      var all = document.querySelectorAll('[data-reveal]');
+      for (var i = 0; i < all.length; i++) all[i].classList.add('is-revealed');
+      return;
+    }
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('[data-reveal]').forEach(function (n) { n.classList.add('is-revealed'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function (n) { io.observe(n); });
+  }
+
+  function setupScrollProgress() {
+    var bar = document.getElementById('scroll-progress-bar');
+    if (!bar) return;
+    function tick() {
+      var h = document.documentElement;
+      var scrolled = h.scrollTop || document.body.scrollTop;
+      var max = (h.scrollHeight - h.clientHeight) || 1;
+      var pct = Math.max(0, Math.min(100, (scrolled / max) * 100));
+      bar.style.width = pct.toFixed(2) + '%';
+    }
+    tick();
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+  }
+
+  function setupSpotlight() {
+    if (REDUCED) return;
+    var spot = document.getElementById('bg-spotlight');
+    if (!spot) return;
+    var raf = null;
+    var pendingX = null, pendingY = null;
+    function apply() {
+      raf = null;
+      if (pendingX == null) return;
+      spot.style.setProperty('--mx', pendingX + '%');
+      spot.style.setProperty('--my', pendingY + '%');
+    }
+    window.addEventListener('pointermove', function (ev) {
+      var w = window.innerWidth || 1;
+      var h = window.innerHeight || 1;
+      pendingX = Math.max(0, Math.min(100, (ev.clientX / w) * 100));
+      pendingY = Math.max(0, Math.min(100, (ev.clientY / h) * 100));
+      if (raf == null) raf = requestAnimationFrame(apply);
+    }, { passive: true });
+  }
+
+  function setupCardTilt() {
+    if (REDUCED) return;
+    var card = document.querySelector('.token-visual .visual-frame');
+    if (!card) return;
+    var host = document.querySelector('.token-visual');
+    if (!host) return;
+    var raf = null;
+    var targetRx = 0, targetRy = 0;
+    function apply() {
+      raf = null;
+      card.style.setProperty('--rx', targetRx.toFixed(2) + 'deg');
+      card.style.setProperty('--ry', targetRy.toFixed(2) + 'deg');
+    }
+    host.addEventListener('pointermove', function (ev) {
+      var r = host.getBoundingClientRect();
+      var cx = r.left + r.width / 2;
+      var cy = r.top + r.height / 2;
+      var dx = (ev.clientX - cx) / (r.width / 2);
+      var dy = (ev.clientY - cy) / (r.height / 2);
+      // Limit tilt to ±6deg for a subtle effect.
+      targetRx = Math.max(-6, Math.min(6, dx * 6));
+      targetRy = Math.max(-6, Math.min(6, -dy * 6));
+      if (raf == null) raf = requestAnimationFrame(apply);
+    });
+    host.addEventListener('pointerleave', function () {
+      targetRx = 0; targetRy = 0;
+      if (raf == null) raf = requestAnimationFrame(apply);
+    });
+  }
+
   /* ── boot ──────────────────────────────────────────────────────────── */
   function boot() {
     setStatusPill('loading');
     bindCopy();
+    setupReveal();
+    setupScrollProgress();
+    setupSpotlight();
+    setupCardTilt();
     startPolling();
   }
   if (document.readyState === 'loading') {
