@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-21T20:49:46.862Z",
+  "updatedAt": "2026-05-21T21:49:49.111Z",
   "mode": "launched",
-  "mint": "HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
-  "symbol": "KEVIN",
-  "name": "Kevin De Bruyne",
-  "description": "The flagship community token for traders who prefer being early to being right, every single time.",
+  "mint": "Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
+  "symbol": "WILLIAM",
+  "name": "William Prince Of",
+  "description": "The on-chain home of the topic everyone keeps coming back to, liquid and loud and built to actually last.",
   "imageUrl": null,
   "status": "launched",
-  "launchedAt": "2026-05-21T20:49:29.129Z",
+  "launchedAt": "2026-05-21T21:49:29.157Z",
   "soldAt": null,
   "devBuySol": 0.02,
-  "createSignature": "5QXjbZWQf4xFdY4TzyaZGiJwXfTc5mGFcyrYK3SHXdsQ7LS58SBCPy5C7Dhtg4oqBioVaHmR4v1UdfRmXNT3vBax",
-  "devBuySignature": "4uzr741i3iPmjLUkjxoyhZbM4ypjqzPfXQFc8yvQmPVmaqVHcfJuRvp7WXqzAf5yqf2MJeKnPXc5SpwTCtiU8eYb",
+  "createSignature": "n4QeNuqvX7nbQbeFtsTXZoW4WxA1rhG6ND9Mc42XnqAfttEGzLBKG8PwUSNAxkDTp9Wa9JiMNuKnDXQSGCDCQ1y",
+  "devBuySignature": "3QwFb4XsRQgAhG9tR2czWiqb4ydwnoHuDU9W2fNUwDXmHgG5qr4W1uvj1dhfg4cwunzZrFx2DdzrKyoJF4EtHzeQ",
   "sellSignature": null,
   "explorers": {
-    "pumpfun": "https://pump.fun/coin/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
-    "solscan": "https://solscan.io/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW",
-    "birdeye": "https://birdeye.so/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW?chain=solana",
-    "gmgn": "https://gmgn.ai/sol/token/HZfnhscQPfFe7GWvw7m6Nv6NuTew3v1QQVWxdSY4fTQW"
+    "pumpfun": "https://pump.fun/coin/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
+    "solscan": "https://solscan.io/token/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
+    "birdeye": "https://birdeye.so/token/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV?chain=solana",
+    "gmgn": "https://gmgn.ai/sol/token/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV"
   },
   "sourceLinks": {
-    "website": "https://dexscreener.com/solana/2ftzfbockrgsnvvrn6dgra3jvubzf9r1gvlkt2crpump",
-    "twitter": "https://x.com/search?q=Kevin%20De%20Bruyne&src=typed_query&f=live"
+    "website": "https://trends.google.com/trending/rss?geo=US",
+    "twitter": "https://x.com/search?q=William%20Prince%20Of&src=typed_query&f=live"
   },
   "disclaimer": "Current Launcher token. This page updates when a new token launches."
 }
