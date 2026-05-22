@@ -1,206 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="noir">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#0a0a0c" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="description" content="A Solana meme token, live on pump.fun." />
+  <meta name="theme-color" content="#fff4e8" />
+  <meta name="color-scheme" content="light" />
   <title>Featured Token</title>
-  <link rel="icon" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;rect width='64' height='64' rx='12' fill='%2308080a'/&gt;&lt;path d='M14 44 L32 14 L50 44 Z' fill='none' stroke='%23d4a23a' stroke-width='3'/&gt;&lt;/svg&gt;" />
+  <link rel="icon" href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'&gt;&lt;circle cx='32' cy='32' r='28' fill='%23ffb7a8'/&gt;&lt;circle cx='24' cy='28' r='3' fill='%23222'/&gt;&lt;circle cx='40' cy='28' r='3' fill='%23222'/&gt;&lt;path d='M22 38 Q32 46 42 38' stroke='%23222' stroke-width='2.5' fill='none' stroke-linecap='round'/&gt;&lt;/svg&gt;" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-scan"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-vignette"></div>
-    <div class="bg-noise"></div>
-  </div>
-
-  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+  <div class="bg" aria-hidden="true"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="bg-dots"></div></div>
 
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Token home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 21 L12 3 L21 21 Z" fill="none" stroke="#d4a23a" stroke-width="2"/></svg>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name" id="brand-name">FEATURED</span>
-        <span class="brand-sub">SOL · PUMP.FUN</span>
-      </span>
-    </a>
-    <nav class="topnav" aria-label="Page sections">
-      <a href="#about">About</a>
-      <a href="#how-to-buy">How to Buy</a>
-      <a href="#contract">Contract</a>
-      <a href="#community">Links</a>
-    </nav>
+    <a class="brand" href="#top"><span class="brand-bug" aria-hidden="true"></span><span class="brand-name" id="brand-name">FEATURED</span></a>
+    <nav class="topnav"><a href="#about">About</a><a href="#how">How to Buy</a><a href="#contract">Contract</a><a href="#links">Links</a></nav>
     <div class="topbar-right">
-      <button class="share-btn" id="share-btn" type="button" aria-label="Copy this page link">
-        <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M11 1.5A2.5 2.5 0 1 1 8.5 4a2.5 2.5 0 0 1 .088-.66L5.43 5.61a2.5 2.5 0 0 1 0 4.78l3.158 2.27A2.5 2.5 0 1 1 7.882 13.66l-3.16-2.27a2.5 2.5 0 1 1 0-6.78l3.16-2.27A2.5 2.5 0 0 1 11 1.5z"/></svg>
-        <span>Share</span>
-      </button>
-      <span class="pill is-static" aria-hidden="true">
-        <span class="pill-dot"></span>
-        <span>ON SOLANA</span>
-      </span>
+      <button class="share-btn" id="share-btn" type="button"><span>Share</span></button>
     </div>
   </header>
 
   <main class="shell" id="top">
-    <section class="hero" aria-labelledby="token-name" data-reveal>
-      <div class="hero-band">
-        <span class="hero-band-pill">FEATURED TOKEN</span>
-        <span class="hero-band-divider"></span>
-        <span class="hero-band-meta">SOLANA · SPL · PUMP.FUN</span>
-      </div>
-
-      <div class="hero-grid">
-        <div class="hero-content">
-          <h1 class="token-name" id="token-name">Loading…</h1>
-          <div class="token-meta">
-            <span class="sym" id="token-symbol">$—</span>
-            <span class="meta-divider"></span>
-            <span class="meta-chip">SOLANA</span>
-            <span class="meta-divider"></span>
-            <span class="meta-chip">PUMP.FUN</span>
+    <section class="hero" data-reveal>
+      <span class="hello">hi hi hi · welcome ✿</span>
+      <div class="hero-row">
+        <figure class="mascot">
+          <div class="mascot-card">
+            <img id="token-image" alt="" decoding="async" />
+            <div class="visual-fallback" id="visual-fallback">
+              <div class="m-head">
+                <div class="m-eye e1"></div><div class="m-eye e2"></div>
+                <div class="m-blush b1"></div><div class="m-blush b2"></div>
+                <div class="m-mouth"></div>
+              </div>
+              <div class="m-glyph" id="fallback-sym">$—</div>
+            </div>
+            <span class="visual-badge" id="token-symbol-badge">—</span>
           </div>
-          <p class="tagline" id="tagline">A community-driven meme on Solana.</p>
-          <p class="description" id="token-description">A new token on pump.fun.</p>
-
+          <span class="float f1">✿</span>
+          <span class="float f2">★</span>
+          <span class="float f3">♡</span>
+        </figure>
+        <div class="hero-text">
+          <h1 class="token-name" id="token-name">Loading…</h1>
+          <p class="tagline" id="tagline">A friendly Solana meme.</p>
+          <p class="desc" id="token-description">A new token on pump.fun.</p>
+          <div class="meta"><span class="sym" id="token-symbol">$—</span><span class="meta-d"></span><span class="meta-chip">SOLANA</span><span class="meta-d"></span><span class="meta-chip">PUMP.FUN</span></div>
           <div class="cta-row">
             <div id="links-primary" class="cta-primary"></div>
-            <nav id="links-secondary" class="cta-secondary" aria-label="External links"></nav>
+            <nav id="links-secondary" class="cta-secondary"></nav>
           </div>
-
-          <button class="ca-chip" id="copy-mint" type="button" aria-label="Copy contract address">
-            <span class="ca-chip-label">CA</span>
-            <code class="ca-chip-mint" id="token-mint">—</code>
-            <span class="ca-chip-copy"><span class="copy-label">Copy</span></span>
-          </button>
+          <button class="ca" id="copy-mint" type="button"><span class="ca-l">CA</span><code id="token-mint">—</code><span class="ca-copy"><span class="copy-label">Copy</span></span></button>
         </div>
-
-        <figure class="token-visual" aria-label="Token visual">
-          <div class="visual-frame">
-            <div class="visual-inner">
-              <img id="token-image" alt="" decoding="async" loading="eager" />
-              <div class="visual-fallback" id="visual-fallback" aria-hidden="true">
-                <div class="fallback-glyph" id="fallback-sym">$—</div>
-                <div class="fallback-grid"></div>
-                <div class="fallback-marker top-left"></div>
-                <div class="fallback-marker top-right"></div>
-                <div class="fallback-marker cnr-bl"></div>
-                <div class="fallback-marker cnr-br"></div>
-              </div>
-              <div class="visual-badge" id="token-symbol-badge">—</div>
-              <div class="visual-scan-line"></div>
-            </div>
-          </div>
-          <figcaption class="visual-caption">
-            <span class="caption-line"></span>
-            <span class="caption-tag">SPECIMEN · 001</span>
-          </figcaption>
-        </figure>
       </div>
     </section>
 
-    <section class="about" id="about" aria-labelledby="about-title" data-reveal>
-      <header class="section-head">
-        <span class="section-num">01</span>
-        <h2 id="about-title" class="section-title">About</h2>
-      </header>
-      <div class="about-body">
-        <p>This page is the public home of a Solana memecoin. It is a community-driven meme — no roadmap, no promise of value, no team gating. Treat it as cultural, not financial.</p>
-      </div>
-      <div class="kv-grid">
-        <div class="kv"><span class="kv-k">Chain</span><strong class="kv-v">Solana</strong></div>
-        <div class="kv"><span class="kv-k">Market</span><strong class="kv-v">Pump.fun</strong></div>
-        <div class="kv"><span class="kv-k">Type</span><strong class="kv-v">SPL memecoin</strong></div>
-        <div class="kv"><span class="kv-k">Community</span><strong class="kv-v">100%</strong></div>
-        <div class="kv"><span class="kv-k">Dev tax</span><strong class="kv-v">0%</strong></div>
-        <div class="kv"><span class="kv-k">Wallet connect</span><strong class="kv-v">None</strong></div>
-      </div>
+    <section class="about" id="about" data-reveal>
+      <h2 class="sec-title">about ✿</h2>
+      <p class="sec-lead">A little Solana memecoin with a soft heart. No promises, no roadmap — just culture, on-chain, where anyone can trade and anyone can leave.</p>
     </section>
 
-    <section class="how-to-buy" id="how-to-buy" aria-labelledby="how-title" data-reveal>
-      <header class="section-head">
-        <span class="section-num">02</span>
-        <h2 id="how-title" class="section-title">How to Buy</h2>
-      </header>
-      <ol class="how-steps">
-        <li class="how-step">
-          <span class="how-step-num">/01</span>
-          <h3>Get a Solana wallet</h3>
-          <p>Install Phantom, Solflare or Backpack. Save your seed phrase offline. Never share it.</p>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">/02</span>
-          <h3>Fund it with SOL</h3>
-          <p>Buy SOL on a reputable exchange and withdraw to your wallet. Test small amounts first.</p>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">/03</span>
-          <h3>Verify the contract</h3>
-          <p>Copy the contract address from this page and double-check it on Solscan before trading.</p>
-        </li>
-        <li class="how-step">
-          <span class="how-step-num">/04</span>
-          <h3>Trade on Pump.fun</h3>
-          <p>Open the Pump.fun link, paste the contract, and trade only what you can afford to lose.</p>
-        </li>
+    <section class="how" id="how" data-reveal>
+      <h2 class="sec-title">how to buy ✿</h2>
+      <ol class="steps">
+        <li><span class="n">①</span><h3>get a wallet</h3><p>phantom, solflare, backpack — keep your seed safe.</p></li>
+        <li><span class="n">②</span><h3>add a little SOL</h3><p>send a tiny test amount first.</p></li>
+        <li><span class="n">③</span><h3>check the contract</h3><p>verify the address on solscan before you trade.</p></li>
+        <li><span class="n">④</span><h3>trade on pump.fun</h3><p>only what you can afford to lose, friend.</p></li>
       </ol>
     </section>
 
-    <section class="contract" id="contract" aria-labelledby="contract-title" data-reveal>
-      <header class="section-head">
-        <span class="section-num">03</span>
-        <h2 id="contract-title" class="section-title">Contract</h2>
-      </header>
-      <div class="mint" role="group" aria-label="Contract address">
-        <div class="mint-head">
-          <span class="mint-label">CONTRACT ADDRESS</span>
-          <span class="mint-chain">SOLANA · SPL</span>
-        </div>
-        <div class="mint-body">
-          <code class="mint-value" title="Click the CA chip above to copy">—</code>
-        </div>
-        <p class="mint-note">Always verify on Solscan before trading.</p>
+    <section class="contract" id="contract" data-reveal>
+      <h2 class="sec-title">contract ✿</h2>
+      <div class="mint-card">
+        <span class="mint-k">contract address</span>
+        <code class="mint-v">—</code>
+        <p class="mint-note">please verify on solscan before trading.</p>
       </div>
     </section>
 
-    <section class="community" id="community" aria-labelledby="community-title" data-reveal>
-      <header class="section-head">
-        <span class="section-num">04</span>
-        <h2 id="community-title" class="section-title">Links</h2>
-      </header>
+    <section class="links" id="links" data-reveal>
+      <h2 class="sec-title">come say hi ✿</h2>
       <div class="link-grid" id="link-grid"></div>
     </section>
 
     <footer class="foot" data-reveal>
-      <div class="foot-rule" aria-hidden="true"></div>
-      <div class="foot-grid">
-        <div class="foot-col">
-          <h3 class="foot-h">Disclaimer</h3>
-          <p class="disclaimer">This page is community-published information about a Solana memecoin. Memecoins are highly volatile and may go to zero. Nothing here is financial advice. Always verify the contract address on Solscan before trading.</p>
-        </div>
-        <div class="foot-col">
-          <h3 class="foot-h">At a glance</h3>
-          <ul class="foot-list">
-            <li><span>Chain</span><strong>Solana</strong></li>
-            <li><span>Market</span><strong>Pump.fun</strong></li>
-            <li><span>Wallet connect</span><strong>None</strong></li>
-            <li><span>Analytics</span><strong>None</strong></li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot-row">
-        <span class="foot-mark">FEATURED · SOLANA · NOIR/001</span>
-        <span class="foot-meta">SPL memecoin</span>
-      </div>
+      <p>this page rotates between recent community tokens. always verify the contract before trading. memecoins are very volatile and can go to zero. nothing here is financial advice. always verify the contract on solscan before trading. be careful out there ♡</p>
+      <span class="foot-mark">FEATURED · CUTE/001</span>
     </footer>
   </main>
 

@@ -1,19 +1,10 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-21T21:49:49.111Z",
-  "mode": "launched",
   "mint": "Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
   "symbol": "WILLIAM",
   "name": "William Prince Of",
   "description": "The on-chain home of the topic everyone keeps coming back to, liquid and loud and built to actually last.",
   "imageUrl": null,
-  "status": "launched",
-  "launchedAt": "2026-05-21T21:49:29.157Z",
-  "soldAt": null,
-  "devBuySol": 0.02,
-  "createSignature": "n4QeNuqvX7nbQbeFtsTXZoW4WxA1rhG6ND9Mc42XnqAfttEGzLBKG8PwUSNAxkDTp9Wa9JiMNuKnDXQSGCDCQ1y",
-  "devBuySignature": "3QwFb4XsRQgAhG9tR2czWiqb4ydwnoHuDU9W2fNUwDXmHgG5qr4W1uvj1dhfg4cwunzZrFx2DdzrKyoJF4EtHzeQ",
-  "sellSignature": null,
   "explorers": {
     "pumpfun": "https://pump.fun/coin/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
     "solscan": "https://solscan.io/token/Fs7u1p8mYK8pKvxRpet3J9Co2xvsxSUe1CFfMDNJTAnV",
@@ -23,6 +14,5 @@
   "sourceLinks": {
     "website": "https://trends.google.com/trending/rss?geo=US",
     "twitter": "https://x.com/search?q=William%20Prince%20Of&src=typed_query&f=live"
-  },
-  "disclaimer": "Current Launcher token. This page updates when a new token launches."
+  }
 }
