@@ -112,3 +112,30 @@ a{color:inherit;text-decoration:none;}button{font:inherit;cursor:pointer;backgro
 [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 [data-reveal].is-revealed{opacity:1;transform:translateY(0);}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}[data-reveal]{opacity:1;transform:none;}}
+
+/* ── PREMIUM HERO IMAGE LAYER (added) ─────────────────────────────── */
+/* Multi-stage reveal, ambient float, soft halo, hover lift.
+   Targets only #token-image and its direct parent via :has() so it
+   never collides with preset-specific frame animations.
+   Falls back gracefully when :has() is unsupported. */
+#token-image{transform-origin:50% 50%;transition:transform .45s cubic-bezier(.22,1,.36,1),filter .45s cubic-bezier(.22,1,.36,1);will-change:transform,opacity,filter;}
+#token-image.is-loaded{opacity:1;animation:phiHeroReveal 1.05s cubic-bezier(.16,1,.3,1) both,phiHeroFloat 7.5s ease-in-out 1.2s infinite;}
+@keyframes phiHeroReveal{
+  0%  {opacity:0;transform:scale(.86) translateY(8px);filter:blur(12px) saturate(.55);}
+  55% {opacity:1;filter:blur(0) saturate(1.05);}
+  100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0) saturate(1);}
+}
+@keyframes phiHeroFloat{
+  0%,100%{transform:scale(1) translateY(0);}
+  50%   {transform:scale(1.014) translateY(-4px);}
+}
+*:has(> #token-image.is-loaded){box-shadow:0 22px 70px -22px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);animation:phiHeroHalo 6s ease-in-out 1.6s infinite;}
+@keyframes phiHeroHalo{0%,100%{filter:brightness(1);}50%{filter:brightness(1.05);}}
+@media (hover:hover){
+  #token-image.is-loaded:hover{transform:scale(1.04) translateY(-2px);filter:saturate(1.10) brightness(1.04);animation-play-state:paused;}
+}
+@media (prefers-reduced-motion:reduce){
+  #token-image{transition:none;}
+  #token-image.is-loaded{animation:none;opacity:1;transform:none;filter:none;}
+  *:has(> #token-image.is-loaded){animation:none;}
+}
